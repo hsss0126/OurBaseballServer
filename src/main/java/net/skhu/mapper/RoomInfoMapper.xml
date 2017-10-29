@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.skhu.mapper.RoomInfoMapper">
+	<select id="findOne" resultType="RoomInfo">
+		SELECT r.*, h.nickName hostName, a.nickName awayName 
+		FROM roomInfo r 
+		LEFT JOIN user h ON r.hostId = h.id
+		LEFT JOIN user a ON r.awayId = a.id
+	</select>
+	
+	<select id="findAll" resultType="RoomInfo">
+		SELECT r.*, u.nickName hostName FROM roomInfo r
+		LEFT JOIN user u ON r.hostId = u.id
+	</select>
+	
+	<select id="findAllwithUserCount" resultType="RoomInfo">
+		SELECT r.*, u.nickName hostName FROM roomInfo r
+		LEFT JOIN user u ON r.hostId = u.id
+		WHERE r.userCount = #{count}
+	</select>
+	
+	<select id="findAllwithLevel" resultType="RoomInfo">
+		SELECT r.*, u.nickName hostName FROM roomInfo r
+		LEFT JOIN user u ON r.hostId = u.id
+		WHERE r.level = #{level}
+	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO roomInfo(name, hostId, level, userCount) 
+		VALUES (#{name}, #{hostId}, #{level}, #{userCount})
+	</insert> 
+	
+	<update id="update">
+		UPDATE roomInfo 
+		<set>
+			hostId = #{hostId},
+			<if test="awayId != 0"> awayId = #{awayId}, </if>
+			level = #{level}, userCount = #{userCount}
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM roomInfo WHERE id = #{id}
+	</delete>
+</mapper>
