@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.skhu.mapper.UserMapper">
 	<select id="findOne" resultType="User">
-		SELECT * FROM user WHERE id = #{ id }
+		SELECT u.*, s.stateName FROM user u LEFT JOIN state s ON u.stateId = s.id WHERE id = #{ id }
 	</select>
 	
 	<select id="findOnewithNickName" resultType="User">
-		SELECT * from user WHERE nickName = #{ nickName }
+		SELECT u.*, s.stateName FROM user u LEFT JOIN state s ON u.stateId = s.id WHERE nickName = #{ nickName }
 	</select>
 	
 	<select id="findAll" resultType="User">
-		SELECT * FROM user
+		SELECT u.*, s.stateName FROM user u LEFT JOIN state s ON u.stateId = s.id
 	</select>
 	
 	<select id="findAllwithState" resultType="User">
-		SELECT * FROM user WHERE stateId = 1
+		SELECT u.*, s.stateName FROM user u LEFT JOIN state s ON u.stateId = s.id WHERE stateId = 1
 	</select>
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
