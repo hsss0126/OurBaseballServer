@@ -24,7 +24,7 @@
 	
 	<update id="update">
 		UPDATE user 
-		SET stateId = #{stateId}, win = #{win}, lose = #{lose}, rate = #{rate}
+		SET stateId = #{stateId}, win = #{win}, lose = #{lose}
 		WHERE id = #{id}
 	</update>
 	

@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import net.skhu.dto.User;
 import net.skhu.mapper.RoomInfoMapper;
 import net.skhu.mapper.UserMapper;
+import net.skhu.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("user")
 public class UserController {
 
-	@Autowired UserMapper userMapper;
-	@Autowired RoomInfoMapper roomInfoMapper;
+	@Autowired UserServiceImpl userService;
 	
 	/*
 	 * 로그인 할때, 중복확인 할때 닉네임을 통해 유저 정보 받아오기
@@ -26,21 +26,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "login", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	public int login(@RequestBody User user) {
-		System.out.println(user.toString());
-		User user1 = userMapper.findOnewithNickName(user.getNickName());
-		//해당 닉네임을 가진 데이터가 존재한다면
-		if(user1 != null) {
-			System.out.println(user1.toString());
-			if(user1.getPassword().equals(user.getPassword())) {
-				return ResponseCode.login_success;
-			} else {
-				return ResponseCode.pwd_error;
-			}
-		} else {
-			return ResponseCode.id_error;
-		}
-		
-		
+		return userService.login(user);
 	}
 	
 	/*
@@ -48,9 +34,8 @@ public class UserController {
 	 * 접속 상태 나 승패관련 정보
 	 */
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String update(User user) {
-		userMapper.update(user);
-		return null;
+	public int update(User user) {
+		return userService.update(user);
 	}
 	
 	/*
@@ -58,21 +43,21 @@ public class UserController {
 	 */
 	@RequestMapping(value = "create", method = RequestMethod.POST, headers = "Accept=application/json; charset=UTF-8")
 	public int create(@RequestBody User user) {
-		userMapper.insert(user);
-		return ResponseCode.join_success;
+		return userService.create(user);
 	}
 	/*
 	 * 아이디를 통해 유저 정보 받아오기 (내정보 or 상대정보)
 	 */
 	@RequestMapping(value = "infowithId", method = RequestMethod.GET)
 	public User infowithId(@Param("id") int id) {
-		User user = userMapper.findOne(id);
-		return user;
+		return userService.infowithId(id);
 	}
+	/*
+	 * 닉네임을 통해 유저 정보 받아오기 (내정보 or 상대정보)
+	 */
 	@RequestMapping(value = "infowithNickName", method = RequestMethod.GET)
 	public User infowithNickName(@Param("nickName") String nickName) {
-		User user = userMapper.findOnewithNickName(nickName);
-		return user;
+		return userService.infowithNickName(nickName);
 	}
 	
 	/*
@@ -80,17 +65,15 @@ public class UserController {
 	 */
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public List<User> list(){
-		List<User> users = userMapper.findAllwithState();
-		return users;
+		return userService.list();
 	}
 	
 	/*
 	 * 유저 id로 삭제
 	 */
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
-	public String delete(@Param("id") int id) {
-		userMapper.delete(id);
-		return null;
+	public int delete(@Param("id") int id) {
+		return userService.delete(id);
 	}
 	
 }
