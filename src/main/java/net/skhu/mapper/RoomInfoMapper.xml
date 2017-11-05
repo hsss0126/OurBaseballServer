@@ -20,19 +20,7 @@
 	<select id="findAll" resultType="RoomInfo">
 		SELECT r.*, u.nickName hostName FROM roomInfo r
 		LEFT JOIN user u ON r.hostId = u.id
-		ORDER BY r.userCount, r.id
-	</select>
-	
-	<select id="findAllwithUserCount" resultType="RoomInfo">
-		SELECT r.*, u.nickName hostName FROM roomInfo r
-		LEFT JOIN user u ON r.hostId = u.id
-		WHERE r.userCount = #{userCount}
-	</select>
-	
-	<select id="findAllwithLevel" resultType="RoomInfo">
-		SELECT r.*, u.nickName hostName FROM roomInfo r
-		LEFT JOIN user u ON r.hostId = u.id
-		WHERE r.level = #{level}
+		ORDER BY ${ orderBy }
 	</select>
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">

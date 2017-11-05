@@ -17,24 +17,12 @@ public class RoomInfoServiceImpl {
 	/*
 	 * 현재 만들어진 방 목록 조회
 	 */
-	public List<RoomInfo> roomList(){
-		List<RoomInfo> rooms = roomInfoMapper.findAll();
-		return rooms;
-	}
-	
-	/*
-	 * 사용자가 선택한 레벨의 방만 조회
-	 */
-	public List<RoomInfo> roomListwithLevel(int level){
-		List<RoomInfo> rooms = roomInfoMapper.findAllwithLevel(level);
-		return rooms;
-	}
-	
-	/*
-	 * 접속 가능한 방만 조회
-	 */
-	public List<RoomInfo> roomListwithUserCount(int userCount){
-		List<RoomInfo> rooms = roomInfoMapper.findAllwithUserCount(userCount);
+	public List<RoomInfo> roomList(int orderBy){
+		String[] orderArray = {"id", "id DESC",
+							"roomName, id", "roomName DESC, id",
+							"level, userCount, id", "level DESC, userCount, id",
+							"userCount, id", "userCount DESC, id"};
+		List<RoomInfo> rooms = roomInfoMapper.findAll(orderArray[orderBy]);
 		return rooms;
 	}
 	
