@@ -1,7 +1,6 @@
 package net.skhu.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -25,7 +24,6 @@ public class User {
 	int lose;
 	
 	@JsonProperty("stateId") @JsonSerialize(using = ToStringSerializer.class)
-	@JsonIgnore
 	int stateId;
 	@JsonProperty("stateName")
 	String stateName;

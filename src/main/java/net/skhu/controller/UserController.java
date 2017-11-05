@@ -33,7 +33,7 @@ public class UserController {
 	 * user정보 업데이트
 	 * 접속 상태 나 승패관련 정보
 	 */
-	@RequestMapping(value = "update", method = RequestMethod.POST)
+	@RequestMapping(value = "update", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	public int update(User user) {
 		return userService.update(user);
 	}

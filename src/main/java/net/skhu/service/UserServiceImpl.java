@@ -2,12 +2,8 @@ package net.skhu.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import net.skhu.dto.User;
 import net.skhu.etc.ResponseCode;
@@ -34,12 +30,12 @@ public class UserServiceImpl {
 				System.out.println("접속상태 세팅");
 				userMapper.update(storedUser);
 				System.out.println("업데이트 완료 후 리턴");
-				return ResponseCode.login_success;
+				return ResponseCode.user_login_success;
 			} else {
-				return ResponseCode.pwd_error;
+				return ResponseCode.user_pwd_error;
 			}
 		} else {
-			return ResponseCode.id_error;
+			return ResponseCode.user_id_error;
 		}
 	}
 	
@@ -49,7 +45,7 @@ public class UserServiceImpl {
 	 */
 	public int update(User user) {
 		userMapper.update(user);
-		return ResponseCode.update_success;
+		return ResponseCode.user_update_success;
 	}
 	
 	/*
@@ -57,7 +53,7 @@ public class UserServiceImpl {
 	 */
 	public int create(User user) {
 		userMapper.insert(user);
-		return ResponseCode.join_success;
+		return ResponseCode.user_create_success;
 	}
 	/*
 	 * 아이디를 통해 유저 정보 받아오기 (내정보 or 상대정보)
@@ -87,7 +83,7 @@ public class UserServiceImpl {
 	 */
 	public int delete(int id) {
 		userMapper.delete(id);
-		return ResponseCode.delete_success;
+		return ResponseCode.user_delete_success;
 	}
 
 }
