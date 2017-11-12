@@ -37,10 +37,10 @@ public class RoomInfoController {
 	
 	/*
 	 * 방의 정보 수정
-	 * (유저가 들락날락 할때 카운트 수정, 레벨 수정, 호스트 수정)
+	 * (유저가 들락날락 할때 카운트, 어웨이 수정, 레벨 수정, 호스트 수정)
 	 */
 	@RequestMapping(value = "update", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
-	public int update(@RequestBody RoomInfo roomInfo) {
+	public RoomInfo update(@RequestBody RoomInfo roomInfo) {
 		return roomInfoService.update(roomInfo);
 	}
 	

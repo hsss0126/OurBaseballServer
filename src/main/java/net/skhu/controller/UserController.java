@@ -48,16 +48,16 @@ public class UserController {
 	/*
 	 * 아이디를 통해 유저 정보 받아오기 (내정보 or 상대정보)
 	 */
-	@RequestMapping(value = "infowithId", method = RequestMethod.GET)
-	public User infowithId(@Param("id") int id) {
-		return userService.infowithId(id);
+	@RequestMapping(value = "infobyId", method = RequestMethod.GET)
+	public User infobyId(@Param("id") int id) {
+		return userService.infobyId(id);
 	}
 	/*
 	 * 닉네임을 통해 유저 정보 받아오기 (내정보 or 상대정보)
 	 */
-	@RequestMapping(value = "infowithNickName", method = RequestMethod.GET)
-	public User infowithNickName(@Param("nickName") String nickName) {
-		return userService.infowithNickName(nickName);
+	@RequestMapping(value = "infobyNickName", method = RequestMethod.GET)
+	public User infobyNickName(@Param("nickName") String nickName) {
+		return userService.infobyNickName(nickName);
 	}
 	
 	/*

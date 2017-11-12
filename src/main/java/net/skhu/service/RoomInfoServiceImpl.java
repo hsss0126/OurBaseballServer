@@ -39,9 +39,10 @@ public class RoomInfoServiceImpl {
 	 * 방의 정보 수정
 	 * (유저가 들락날락 할때 카운트 수정, 레벨 수정, 호스트 수정)
 	 */
-	public int update(RoomInfo roomInfo) {
+	public RoomInfo update(RoomInfo roomInfo) {
 		roomInfoMapper.update(roomInfo);
-		return ResponseCode.roomInfo_update_success;
+		RoomInfo updatedInfo = roomInfoMapper.findOne(roomInfo.getId());
+		return updatedInfo;
 	}
 	
 	/*

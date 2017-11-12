@@ -5,7 +5,7 @@
 		SELECT u.*, s.stateName FROM user u LEFT JOIN state s ON u.stateId = s.id WHERE id = #{ id }
 	</select>
 	
-	<select id="findOnewithNickName" resultType="User">
+	<select id="findOnebyNickName" resultType="User">
 		SELECT u.*, s.stateName FROM user u LEFT JOIN state s ON u.stateId = s.id WHERE nickName = #{ nickName }
 	</select>
 	
@@ -13,8 +13,8 @@
 		SELECT u.*, s.stateName FROM user u LEFT JOIN state s ON u.stateId = s.id
 	</select>
 	
-	<select id="findAllwithState" resultType="User">
-		SELECT u.*, s.stateName FROM user u LEFT JOIN state s ON u.stateId = s.id WHERE stateId = 1
+	<select id="findAllbyState" resultType="User">
+		SELECT u.*, s.stateName FROM user u LEFT JOIN state s ON u.stateId = s.id WHERE stateId = '1'
 	</select>
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">

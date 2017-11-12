@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
 @Data
-@JsonPropertyOrder({"id", "nickName", "password", "win", "lose", "stateId"})
+@JsonPropertyOrder({"id", "nickName", "password", "win", "lose", "stateId", "stateName"})
 public class User {
 
 	@JsonProperty("id") @JsonSerialize(using = ToStringSerializer.class)
@@ -23,8 +23,8 @@ public class User {
 	@JsonProperty("lose") @JsonSerialize(using = ToStringSerializer.class)
 	int lose;
 	
-	@JsonProperty("stateId") @JsonSerialize(using = ToStringSerializer.class)
-	int stateId;
+	@JsonProperty("stateId")
+	String stateId;
 	@JsonProperty("stateName")
 	String stateName;
 	

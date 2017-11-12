@@ -10,9 +10,9 @@ import net.skhu.dto.User;
 public interface UserMapper {
 
 	User findOne(int id);
-	User findOnewithNickName(String nickName);
+	User findOnebyNickName(String nickName);
 	List<User> findAll();
-	List<User> findAllwithState();
+	List<User> findAllbyState();
 	void insert(User user);
 	void update(User user);
 	void delete(int id);

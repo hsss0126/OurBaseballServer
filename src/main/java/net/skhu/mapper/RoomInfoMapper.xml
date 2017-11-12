@@ -31,9 +31,10 @@
 	<update id="update">
 		UPDATE roomInfo 
 		<set>
-			hostId = #{hostId},
+			<if test="hostId != 0"> hostId = #{hostId}, </if>
 			<if test="awayId != 0"> awayId = #{awayId}, </if>
-			level = #{level}, userCount = #{userCount}
+			<if test="level != 0"> level = #{level}, </if>
+			<if test="userCount != 0"> userCount = #{userCount} </if>
 		</set>
 		WHERE id = #{id}
 	</update>

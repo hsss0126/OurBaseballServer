@@ -20,13 +20,13 @@ public class UserServiceImpl {
 	 */
 	public int login(User user) {
 		System.out.println(user.toString());
-		User storedUser = userMapper.findOnewithNickName(user.getNickName());
+		User storedUser = userMapper.findOnebyNickName(user.getNickName());
 		//해당 닉네임을 가진 데이터가 존재한다면
 		if(storedUser != null) {
 			System.out.println(storedUser.toString());
 			if(storedUser.getPassword().equals(user.getPassword())) {
 				System.out.println("패스워드 동일 접속상태로 변경 시도");
-				storedUser.setStateId(1);
+				storedUser.setStateId("1");
 				System.out.println("접속상태 세팅");
 				userMapper.update(storedUser);
 				System.out.println("업데이트 완료 후 리턴");
@@ -58,15 +58,15 @@ public class UserServiceImpl {
 	/*
 	 * 아이디를 통해 유저 정보 받아오기 (내정보 or 상대정보)
 	 */
-	public User infowithId(int id) {
+	public User infobyId(int id) {
 		User user = userMapper.findOne(id);
 		return user;
 	}
 	/*
 	 * 닉네임을 통해 유저 정보 받아오기 (내정보 or 상대정보)
 	 */
-	public User infowithNickName(String nickName) {
-		User user = userMapper.findOnewithNickName(nickName);
+	public User infobyNickName(String nickName) {
+		User user = userMapper.findOnebyNickName(nickName);
 		return user;
 	}
 	
@@ -74,7 +74,7 @@ public class UserServiceImpl {
 	 * 현재 접속중인 유저 받아오기
 	 */
 	public List<User> list(){
-		List<User> users = userMapper.findAllwithState();
+		List<User> users = userMapper.findAllbyState();
 		return users;
 	}
 	
