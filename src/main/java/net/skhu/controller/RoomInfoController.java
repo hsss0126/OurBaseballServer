@@ -36,6 +36,14 @@ public class RoomInfoController {
 	}
 	
 	/*
+	 * 방 정보 조회
+	 */
+	@RequestMapping(value = "findById", method = RequestMethod.GET)
+	public RoomInfo findById(@Param("id") int id) {
+		return roomInfoService.findById(id);
+	}
+	
+	/*
 	 * 방의 정보 수정
 	 * (유저가 들락날락 할때 카운트, 어웨이 수정, 레벨 수정, 호스트 수정)
 	 */

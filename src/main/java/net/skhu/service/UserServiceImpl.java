@@ -20,7 +20,7 @@ public class UserServiceImpl {
 	 */
 	public int login(User user) {
 		System.out.println(user.toString());
-		User storedUser = userMapper.findOnebyNickName(user.getNickName());
+		User storedUser = userMapper.findOneByNickName(user.getNickName());
 		//해당 닉네임을 가진 데이터가 존재한다면
 		if(storedUser != null) {
 			System.out.println(storedUser.toString());
@@ -58,15 +58,15 @@ public class UserServiceImpl {
 	/*
 	 * 아이디를 통해 유저 정보 받아오기 (내정보 or 상대정보)
 	 */
-	public User infobyId(int id) {
+	public User findById(int id) {
 		User user = userMapper.findOne(id);
 		return user;
 	}
 	/*
 	 * 닉네임을 통해 유저 정보 받아오기 (내정보 or 상대정보)
 	 */
-	public User infobyNickName(String nickName) {
-		User user = userMapper.findOnebyNickName(nickName);
+	public User findByNickName(String nickName) {
+		User user = userMapper.findOneByNickName(nickName);
 		return user;
 	}
 	
@@ -74,7 +74,7 @@ public class UserServiceImpl {
 	 * 현재 접속중인 유저 받아오기
 	 */
 	public List<User> list(){
-		List<User> users = userMapper.findAllbyState();
+		List<User> users = userMapper.findAllByState();
 		return users;
 	}
 	

@@ -36,6 +36,12 @@ public class RoomInfoServiceImpl {
 	}
 	
 	/*
+	 * 방 정보 조회
+	 */
+	public RoomInfo findById(int id) {
+		return roomInfoMapper.findOne(id);
+	}
+	/*
 	 * 방의 정보 수정
 	 * (유저가 들락날락 할때 카운트 수정, 레벨 수정, 호스트 수정)
 	 */

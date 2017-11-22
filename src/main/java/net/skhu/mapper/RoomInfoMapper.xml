@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.skhu.mapper.RoomInfoMapper">
 	<select id="findOne" resultType="RoomInfo">
-		SELECT r.*, h.id hostId, h.nickName hostName,a.id awayId, a.nickName awayName 
+		SELECT r.*, h.id hostId, h.nickName hostName, a.id awayId, a.nickName awayName 
 		FROM roomInfo r 
 		LEFT JOIN user h ON r.hostId = h.id
 		LEFT JOIN user a ON r.awayId = a.id
@@ -10,7 +10,7 @@
 	</select>
 	
 	<select id="findOnewithHostId" resultType="RoomInfo">
-		SELECT r.*, h.id hostId, h.nickName hostName,a.id awayId, a.nickName awayName 
+		SELECT r.*, h.id hostId, h.nickName hostName, a.id awayId, a.nickName awayName 
 		FROM roomInfo r 
 		LEFT JOIN user h ON r.hostId = h.id
 		LEFT JOIN user a ON r.awayId = a.id
