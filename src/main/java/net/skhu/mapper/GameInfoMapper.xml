@@ -5,17 +5,40 @@
 		SELECT * FROM gameInfo WHERE id = #{id}
 	</select>
 	
+	<select id="findByRoomId" resultType="GameInfo">
+		SELECT * FROM gameInfo WHERE roomId = #{roomId}
+	</select>
+	
+	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO gameInfo(roomId, hostNumber, awayNumber, orderUserId)
-		VALUES (#{roomId}, #{hostNumber}, #{awayNumber}, #{orderUserId})
+		INSERT INTO gameInfo(roomId)
+		VALUES (#{roomId})
 	</insert>
 	
 	<update id="update">
 		UPDATE gameInfo SET inputNum = #{inputNum}, orderUserId = #{orderUserId}
 		WHERE id = #{id}
 	</update>
+	
+	<update id="setting">
+		UPDATE gameInfo 
+		<set>
+			<if test="hostNumber != null"> hostNumber = #{hostNumber}, </if> 
+			<if test="awayNumber != null"> awayNumber = #{awayNumber} </if> 
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	<update id="gameEnd">
+		UPDATE gameInfo SET hostNumber = null, awayNumber = null, inputNum = null, orderUserId = 0
+		WHERE id = #{id}
+	</update>
+	
 	<delete id="delete">
 		DELETE FROM gameInfo WHERE id = #{id}
 	</delete>
 
+	<delete id="deleteByRoomId">
+		DELETE FROM gameInfo WHERE roomId = #{roomId}
+	</delete>
 </mapper>

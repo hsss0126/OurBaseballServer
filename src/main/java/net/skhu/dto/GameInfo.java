@@ -7,9 +7,9 @@ public class GameInfo {
 
 	int id;
 	int roomId;
-	int hostNumber;
-	int awayNumber;
-	int inputNum;
+	String hostNumber;
+	String awayNumber;
+	String inputNum;
 	int orderUserId;
 	BallCount hostCount;
 	BallCount awayCount;

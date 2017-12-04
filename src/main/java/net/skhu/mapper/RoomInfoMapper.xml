@@ -33,6 +33,7 @@
 		<set>
 			<if test="hostId != 0"> hostId = #{hostId}, </if>
 			<if test="awayId != 0"> awayId = #{awayId}, </if>
+			<if test="awayId == 0"> awayId = null, </if>
 			<if test="level != 0"> level = #{level}, </if>
 			<if test="userCount != 0"> userCount = #{userCount} </if>
 		</set>

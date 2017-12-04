@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.skhu.dto.User;
-import net.skhu.mapper.RoomInfoMapper;
-import net.skhu.mapper.UserMapper;
 import net.skhu.service.UserServiceImpl;
 
 @RestController
@@ -34,14 +32,14 @@ public class UserController {
 	 * 접속 상태 나 승패관련 정보
 	 */
 	@RequestMapping(value = "update", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
-	public int update(User user) {
+	public User update(@RequestBody User user) {
 		return userService.update(user);
 	}
 	
 	/*
 	 * 가입 시 유저 목록에 추가
 	 */
-	@RequestMapping(value = "create", method = RequestMethod.POST, headers = "Accept=application/json; charset=UTF-8")
+	@RequestMapping(value = "create", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	public int create(@RequestBody User user) {
 		return userService.create(user);
 	}

@@ -31,8 +31,7 @@ public class RoomInfoServiceImpl {
 	 */
 	public RoomInfo create(RoomInfo roomInfo) {
 		roomInfoMapper.insert(roomInfo);
-		RoomInfo created = roomInfoMapper.findOnewithHostId(roomInfo.getHostId());
-		return created;
+		return roomInfoMapper.findOnewithHostId(roomInfo.getHostId());
 	}
 	
 	/*
@@ -47,8 +46,7 @@ public class RoomInfoServiceImpl {
 	 */
 	public RoomInfo update(RoomInfo roomInfo) {
 		roomInfoMapper.update(roomInfo);
-		RoomInfo updatedInfo = roomInfoMapper.findOne(roomInfo.getId());
-		return updatedInfo;
+		return roomInfoMapper.findOne(roomInfo.getId());
 	}
 	
 	/*

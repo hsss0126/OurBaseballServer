@@ -43,9 +43,9 @@ public class UserServiceImpl {
 	 * user정보 업데이트
 	 * 접속 상태 나 승패관련 정보
 	 */
-	public int update(User user) {
+	public User update(User user) {
 		userMapper.update(user);
-		return ResponseCode.user_update_success;
+		return userMapper.findOne(user.getId());
 	}
 	
 	/*

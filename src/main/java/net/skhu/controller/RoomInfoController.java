@@ -45,7 +45,7 @@ public class RoomInfoController {
 	
 	/*
 	 * 방의 정보 수정
-	 * (유저가 들락날락 할때 카운트, 어웨이 수정, 레벨 수정, 호스트 수정)
+	 * (유저가 들락날락 할때 카운트, 어웨이 수정, 레벨 수정)
 	 */
 	@RequestMapping(value = "update", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	public RoomInfo update(@RequestBody RoomInfo roomInfo) {
@@ -53,10 +53,11 @@ public class RoomInfoController {
 	}
 	
 	/*
-	 * 방에 대기인원이 없을 시 삭제
+	 * 방에 대기인원이 없을 시 삭제(방장이 나갈 시)
 	 */
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public int delete(@Param("id") int id) {
 		return roomInfoService.delete(id);
 	}
+	
 }
