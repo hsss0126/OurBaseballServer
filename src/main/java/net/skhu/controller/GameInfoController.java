@@ -59,7 +59,7 @@ public class GameInfoController {
 	/*
 	 * 해당 방의 게임정보를 조회
 	 */
-	@RequestMapping(value = "findById", method = RequestMethod.GET)
+	@RequestMapping(value = "findByRoomId", method = RequestMethod.GET)
 	public GameInfo findByRoomId(@Param("roomId") int roomId) {
 		return gameInfoService.findByRoomId(roomId);
 	}
