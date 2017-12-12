@@ -7,5 +7,11 @@ public class BallCount {
 
 	int ball;
 	int strike;
-	int out;
+	boolean out;
+	
+	@Override
+	public String toString() {
+		if(this.out) return "OUT";
+		return String.format("%dS %dB", this.strike, this.ball);
+	}
 }

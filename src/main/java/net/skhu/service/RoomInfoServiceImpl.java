@@ -7,12 +7,14 @@ import org.springframework.stereotype.Service;
 
 import net.skhu.dto.RoomInfo;
 import net.skhu.etc.ResponseCode;
+import net.skhu.mapper.GameInfoMapper;
 import net.skhu.mapper.RoomInfoMapper;
 
 @Service("RoomInfoService")
 public class RoomInfoServiceImpl {
 
 	@Autowired RoomInfoMapper roomInfoMapper;
+	@Autowired GameInfoMapper gameInfoMapper;
 	
 	/*
 	 * 현재 만들어진 방 목록 조회
@@ -31,7 +33,9 @@ public class RoomInfoServiceImpl {
 	 */
 	public RoomInfo create(RoomInfo roomInfo) {
 		roomInfoMapper.insert(roomInfo);
-		return roomInfoMapper.findOnewithHostId(roomInfo.getHostId());
+		RoomInfo created = roomInfoMapper.findOnewithHostId(roomInfo.getHostId());
+		gameInfoMapper.insert(created.getId());
+		return created;
 	}
 	
 	/*
@@ -53,6 +57,7 @@ public class RoomInfoServiceImpl {
 	 * 방에 대기인원이 없을 시 삭제
 	 */
 	public int delete(int id) {
+		gameInfoMapper.deleteByRoomId(id);
 		roomInfoMapper.delete(id);
 		return ResponseCode.roomInfo_delete_success;
 	}

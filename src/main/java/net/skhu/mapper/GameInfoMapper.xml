@@ -30,7 +30,7 @@
 	</update>
 	
 	<update id="gameEnd">
-		UPDATE gameInfo SET hostNumber = null, awayNumber = null, inputNum = null, orderUserId = 0
+		UPDATE gameInfo SET hostNumber = null, awayNumber = null, inputNum = null, orderUserId = null
 		WHERE id = #{id}
 	</update>
 	

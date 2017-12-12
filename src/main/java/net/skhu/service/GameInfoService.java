@@ -6,7 +6,7 @@ public interface GameInfoService {
 
 	public GameInfo findById(int id);
 	public GameInfo findByRoomId(int roomId);
-	public GameInfo create(GameInfo gameInfo);
+	public GameInfo create(int roomId);
 	public GameInfo update(GameInfo gameInfo);
 	public GameInfo setting(GameInfo gameInfo);
 	public GameInfo gameEnd(GameInfo gameInfo);

@@ -22,7 +22,6 @@ public class RoomInfoController {
 	 */
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public List<RoomInfo> list(@Param("orderBy") String orderBy){
-		System.out.println(orderBy);
 		return roomInfoService.roomList(Integer.parseInt(orderBy));
 	}
 	
@@ -31,7 +30,6 @@ public class RoomInfoController {
 	 */
 	@RequestMapping(value = "create", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
 	public RoomInfo create(@RequestBody RoomInfo roomInfo) {
-		System.out.println("컨트롤러 : "+roomInfo.toString());
 		return roomInfoService.create(roomInfo);
 	}
 	

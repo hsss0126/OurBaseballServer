@@ -9,7 +9,7 @@ public interface GameInfoMapper {
 
 	GameInfo findOne(int id);
 	GameInfo findByRoomId(int roomId);
-	void insert(GameInfo gameInfo);
+	void insert(int roomId);
 	void update(GameInfo gameInfo);
 	void setting(GameInfo gameInfo);
 	void gameEnd(int id);
